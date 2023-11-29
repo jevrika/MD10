@@ -2,24 +2,10 @@ import $ from 'jquery';
 import { nameValidate } from './utils/nameValidate/nameValidate';
 import { emailValidate } from './utils/emailValidate/emailValidate';
 import { passwordValidate } from './utils/passwordValidate/passwordValidate';
+import { drawForm } from './utils/drawForm/drawTable';
+import { add, multiply } from './utils/mathFunction/mathFunctions';
+import { processData } from './utils/dataProcessor/dataProcessor';
 
-const drawForm = () => {
-  $('.container').html(`
-<div class="js-wrapper form__wrapper">
-<form class='js-form user__form'>
-<label class='input__label' for="fname">First name:</label>
-<input class='js-input input' name='fname' type='text'>
-<label class='input__label' for="email">Email:</label>
-<input class='js-input input' name='email' type='text'>
-<label class='input__label' for="paswword">Password:</label>
-<input class='js-input input' name='password' type='password' placeholder=''>
-<div class='button__wrapper'> 
-<input class='js-submit--button submit__button'type="submit" value="Submit">
-</div>
-</div> 
-</form>
-`);
-};
 drawForm();
 
 $('.js-form').on('submit', (event) => {
@@ -65,3 +51,12 @@ $('.js-form').on('submit', (event) => {
     $('.js-input').css('border', '1px solid #c0bdbd');
   }
 });
+
+//
+
+const addResult = add(3, 3);
+console.log('addResult', addResult);
+const multiplyResult = multiply(20, 20);
+console.log('multiplyResult', multiplyResult);
+const processDataResult = processData([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+console.log('processDataResult', processDataResult);

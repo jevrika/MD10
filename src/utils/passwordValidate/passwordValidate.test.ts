@@ -1,6 +1,6 @@
 import { passwordValidate } from './passwordValidate';
 
-describe('nameValidate', () => {
+describe('passwordValidate', () => {
   it('should validate less than 8 characters', () => {
     const result = passwordValidate('asdftr');
 

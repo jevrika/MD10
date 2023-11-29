@@ -1,6 +1,6 @@
 import { emailValidate } from './emailValidate';
 
-describe('nameValidate', () => {
+describe('emailValidate', () => {
   it('should not validate without @ character', () => {
     const result = emailValidate('testgmail.com');
     expect(result).toEqual(false);
