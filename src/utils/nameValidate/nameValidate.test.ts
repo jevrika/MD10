@@ -1,13 +1,13 @@
 import { nameValidate } from './nameValidate';
 
 describe('nameValidate', () => {
-  it('should validate 1 letter', () => {
+  it('should validate with 1 letter', () => {
     const result = nameValidate('a');
 
     expect(result).toEqual(false);
   });
 
-  it('should validate 10  letter', () => {
+  it('should validate with 10 letters', () => {
     const result = nameValidate('asdfghjklq');
 
     expect(result).toEqual(true);

@@ -1,7 +1,7 @@
 import { emailValidate } from './emailValidate';
 
 describe('emailValidate', () => {
-  it('should not validate without @ character', () => {
+  it('should validate without @ character', () => {
     const result = emailValidate('testgmail.com');
     expect(result).toEqual(false);
   });
@@ -13,11 +13,11 @@ describe('emailValidate', () => {
     const result = emailValidate('test123@gmail.com');
     expect(result).toEqual(true);
   });
-  it('should not validate with special characters ', () => {
+  it('should validate with special characters ', () => {
     const result = emailValidate('#$%^test123@gmail.com');
     expect(result).toEqual(false);
   });
-  it('should not validate with whitespace', () => {
+  it('should validate with whitespace', () => {
     const result = emailValidate('est123   @gmail.com');
     expect(result).toEqual(false);
   });

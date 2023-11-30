@@ -5,62 +5,51 @@ import { passwordValidate } from './utils/passwordValidate/passwordValidate';
 import { drawForm } from './utils/formFunctions/drawForm';
 import { add, multiply } from './utils/mathFunction/mathFunctions';
 import { processData } from './utils/dataProcessor/dataProcessor';
+import { isValid, notValid } from './utils/checkIfValid/checkIfValid';
 
-drawForm();
+$('.container').html(`
+<div class="js-wrapper form__wrapper">
+<form class='js-form user__form'>
+<label class='js-label input__label' for="name">First name:</label>
+<input class='js-input input' name='name' type='text'>
+<label class='js-label input__label' for="email">Email:</label>
+<input class='js-input input' name='email' type='text'>
+<label class='js-label input__label' for="paswword">Password:</label>
+<input class='js-input input' name='password' type='password' placeholder=''>
+<div class='button__wrapper'> 
+<input class='js-submit--button submit__button'type="submit" value="Submit">
+</div>
+</div> 
+</form>
+`);
 
 $('.js-form').on('submit', (event) => {
   event.preventDefault();
-  const name = $('.js-input[name="name"]').val().toString();
-  const email = $('.js-input[name="email"]').val().toString();
-  const password = $('.js-input[name="password"]').val().toString();
 
-  const nameIsValid = nameValidate(name);
-  const emailValid = emailValidate(email);
-  const passwordValid = passwordValidate(password);
+  const nameIsValid = nameValidate($('.js-input[name="name"]').val().toString());
+  const emailValid = emailValidate($('.js-input[name="email"]').val().toString());
+  const passwordValid = passwordValidate($('.js-input[name="password"]').val().toString());
 
   $('.js-input').css('border', '1px solid #9af7c4');
   $('.js-input').attr('placeholder', '');
   $('.js-submit--button').css('background-color', '');
 
   if (nameIsValid) {
-    $('.js-input[name="name"]').css('border', '1px solid #9af7c4;');
-    $('.error-message-name').remove();
+    isValid('name');
   } else {
-    $('.error-message-name').remove();
-    $('.js-label').eq(0).append('<div class="error-message-name"><p class="name-error">Name must have at least 2 characters and can only contain letters, but maximum 50 characters.</p></div>');
-    $('.name-error').css({ color: 'red', 'font-size': '10px' });
-
-    $('.js-input[name="name"]').css('border', '1px solid #e57474');
-    $('.js-input').attr('placeholder', 'Please fill this field!');
-    $('.js-submit--button').css('background-color', '#e57474');
+    notValid('name', 0);
   }
 
   if (emailValid) {
-    $('.js-input[name="email"]').css('border', '1px solid #9af7c4;');
-    $('.error-message-email').remove();
+    isValid('email');
   } else {
-    $('.error-message-email').remove();
-    $('.js-label').eq(1).append('<div class="error-message-email"><p class="email-error">The email must be in a valid format (e.g. example@example.com).</p></div>');
-    $('.email-error').css({ color: 'red', 'font-size': '10px' });
-
-    $('.js-input[name="email"]').css('border', '1px solid #e57474');
-    $('.js-input').attr('placeholder', 'Please fill this field!');
-    $('.js-submit--button').css('background-color', '#e57474');
+    notValid('email', 1);
   }
 
   if (passwordValid) {
-    $('.js-input[name="password"]').css('border', '1px solid #9af7c4;');
-    $('.error-message-password').remove();
+    isValid('password');
   } else {
-    $('.error-message-password').remove();
-    $('.js-label')
-      .eq(2)
-      .append('<div class="error-message-password"><p class="password-error">The password must be at least 8 characters long and must contain at least 1 number and 1 special character (!, @, #, $, %, ^, &, *)..</p></div>');
-    $('.password-error').css({ color: 'red', 'font-size': '10px' });
-
-    $('.js-input[name="password"]').css('border', '1px solid #e57474');
-    $('.js-input').attr('placeholder', 'Please fill this field!');
-    $('.js-submit--button').css('background-color', '#e57474');
+    notValid('password', 2);
   }
   if (nameIsValid && emailValid && passwordValid) {
     alert('You have successfully completed the form');
