@@ -2,9 +2,8 @@ import $ from 'jquery';
 import { nameValidate } from './utils/nameValidate/nameValidate';
 import { emailValidate } from './utils/emailValidate/emailValidate';
 import { passwordValidate } from './utils/passwordValidate/passwordValidate';
-import { drawForm } from './utils/formFunctions/drawForm';
-import { add, multiply } from './utils/mathFunction/mathFunctions';
-import { processData } from './utils/dataProcessor/dataProcessor';
+import { add, multiply } from './utils/otherFunctions/mathFunction/mathFunctions';
+import { processData } from './utils/otherFunctions/dataProcessor/dataProcessor';
 import { isValid, notValid } from './utils/checkIfValid/checkIfValid';
 
 $('.container').html(`
